@@ -1,0 +1,16 @@
+.line{
+    border: 1px solid black;
+    min-height: 60px;
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+    button{
+        background-color: rgb(246, 186, 19);
+        align-self: center;
+    }    
+}
+.buttonLine{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

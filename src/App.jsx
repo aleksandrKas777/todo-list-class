@@ -28,7 +28,14 @@ const  App = () => {
   ];
   return (
     <div>
-      <input type="text"/>
+      <div className='panel'>
+        <input type="text"/>
+        <div>
+          <button>все задачи</button>
+          <button>активные задачи</button>
+          <button>завершенные задачи</button> 
+        </div>
+      </div>
       <div>
         <Tasks taskList = {taskList} />
       </div>
