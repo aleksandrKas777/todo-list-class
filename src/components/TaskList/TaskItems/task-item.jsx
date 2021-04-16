@@ -1,5 +1,5 @@
 import React from 'react';
-import {Buttons} from '../buttons/Buttons';
+import {Buttons} from './ButtonImportance/button-importance';
 
 
 export const TaskItem = ({item}) => {
@@ -13,7 +13,7 @@ export const TaskItem = ({item}) => {
             <div className = 'tasks' style={style} > {item.name} </div>
             <div className='buttonLine'>
                 < Buttons item={item}/>
-                <button>удалить</button>
+                <button>удалить задачу</button>
             </div>
         </li>);
 };
