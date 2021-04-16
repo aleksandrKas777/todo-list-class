@@ -1,14 +1,20 @@
 import React from 'react';
+import {Buttons} from '../buttons/Buttons';
 
 
 export const TaskItem = ({item}) => {
-    const buttonText = (item.importance === false ?  'отметить как важное': 'снять отметку как важное');
+    const style = {
+        fontWeight: (item.importance === false ? 'normal': 'bolder')
+    };
+
+    
     return (
         <li className='line'>
-            <div> {item.name} </div>
+            <div className = 'tasks' style={style} > {item.name} </div>
             <div className='buttonLine'>
-                <button> {buttonText} </button>
+                < Buttons item={item}/>
                 <button>удалить</button>
             </div>
         </li>);
 };
+
