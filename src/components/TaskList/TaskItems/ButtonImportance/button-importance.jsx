@@ -1,8 +1,11 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-export const Buttons = ({item}) => {
-    const buttonText = (item.importance === false ?  'отметить как важное': 'снять отметку как важное');
+export class Buttons extends Component {
 
- return (
-     <button> {buttonText}</button>);
+    render() {
+        const buttonText = (item.importance === false ?  'отметить как важное': 'снять отметку как важное');
+        return (
+            <button> {buttonText}</button>
+            );
+    }
 };
