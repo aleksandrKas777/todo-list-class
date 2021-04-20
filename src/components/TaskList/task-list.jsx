@@ -1,17 +1,8 @@
-<<<<<<< HEAD
 import React, { Component } from 'react';
-import {TaskItem} from './taskItems/Task-item';
+import {TaskItem} from './taskItems/task-item';
 
 export class TaskList extends Component {
     
-=======
-import React, {Component} from 'react';
-import {TaskItem} from './TaskItems/task-item';
-
-export class Tasks extends Component {
-
-
->>>>>>> 921766fe70b2b8e4ee1bf2e14b74a982ab65e617
     render() {
         return (
             
@@ -21,9 +12,5 @@ export class Tasks extends Component {
 
         );
     }
-<<<<<<< HEAD
         
-=======
-            
->>>>>>> 921766fe70b2b8e4ee1bf2e14b74a982ab65e617
 };
