@@ -1,32 +1,74 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import {Tasks} from './components/TaskList/task-list';
+import {TaskList} from './components/taskList/Task-List';
 
-const  App = () => {
-  const taskList = [
+<<<<<<< HEAD
+
+const taskList = [
   {
     id: 1,
     name: 'task1',
-    importance: true
+    importance: true,
+    active: false
   },
   {
     id: 2,
     name: 'task2',
-    importance: false
+    importance: false,
+    active: true
   },
   {
     id: 3,
     name: 'task3',
-    importance: false
+    importance: false,
+    active: false
   },
   {
     id: 4,
     name: 'task4',
-    importance: true
+    importance: true,
+    active: true
   },
 
-  ];
-  return (
+];
+
+
+
+class  App extends Component {
+  
+  render() {
+    this.state = taskList;
+    console.log(this.state);
+
+=======
+class  App extends React.Component {
+  
+  render(){
+      const taskList = [
+    {
+      id: 1,
+      name: 'task1',
+      importance: true
+    },
+    {
+      id: 2,
+      name: 'task2',
+      importance: false
+    },
+    {
+      id: 3,
+      name: 'task3',
+      importance: false
+    },
+    {
+      id: 4,
+      name: 'task4',
+      importance: true
+    },
+
+    ];
+>>>>>>> 921766fe70b2b8e4ee1bf2e14b74a982ab65e617
+    return (
     <div>
       <div className='panel'>
         <input type="text"/>
@@ -37,10 +79,12 @@ const  App = () => {
         </div>
       </div>
       <div>
-        <Tasks taskList = {taskList} />
+        <TaskList taskList = {taskList} />
       </div>
     </div>
   );
+  }
+  
  
 };
 
