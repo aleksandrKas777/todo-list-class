@@ -1,6 +1,6 @@
 import React from 'react';
-import {ButtonImportance} from './buttons/button-importance/Button-importance';
-import {ButtonActive} from './buttons/button-active/Button-active';
+import {ButtonImportance} from './buttons/button-importance/ButtonImportance';
+import {ButtonActive} from './buttons/button-active/ButtonActive';
 
 
 export const TaskItem = ({id,importance, active, name, deleteTask, importanceTask,  activeTask}) => {

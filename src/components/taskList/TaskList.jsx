@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {TaskItem} from './taskItems/Task-item';
+import {TaskItem} from './taskItems/TaskItem';
 
 export  const TaskList = ({taskList, deleteTask, importanceTask,  activeTask}) => {
         return (
