@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import {TaskList} from './components/taskList/task-list';
-import {ButtonDispList} from './components/taskList/taskItems/buttons/button-disp-list/button-disp-list';
+import {TaskList} from './components/taskList/Task-list';
+import {ButtonDispList} from './components/taskList/taskItems/buttons/button-disp-list/Button-disp-list';
 
 
 class  App extends Component {
