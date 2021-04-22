@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import {TaskList} from './components/taskList/task-list';
+import {ButtonDispList} from './components/taskList/taskItems/buttons/button-disp-list/button-disp-list';
 
 
 class  App extends Component {
@@ -31,7 +32,9 @@ class  App extends Component {
         active: true
       },
     
-    ]
+    ],
+
+    displayedList : 'active'
   }
 
  importanceTask = (id) => {
@@ -80,23 +83,45 @@ class  App extends Component {
 
     this.setState(stateDel);
   }
+
+
+  displayList = (key) => {
+    const stateDisp = (preState) => {
+      const{taskList} = preState;
+  
+    return {
+      taskList: taskList,
+      displayedList: key
+      };
+    };
+ 
+    this.setState(stateDisp);
+  }
   
 
   
   render() {
-    const {taskList} = this.state;
+    const {taskList, displayedList} = this.state;
+    let newTaskList = null;
+    if(displayedList === 'completed'){
+      newTaskList = taskList.filter(item => item.active === false);
+    }else if(displayedList === 'active'){
+      newTaskList = taskList.filter(item => item.active === true);
+    } else{
+      newTaskList = taskList;
+    }
+    console.log(newTaskList);
+    
     return (
     <div>
       <div className='panel'>
         <input type="text"/>
         <div>
-          <button>все задачи</button>
-          <button>активные задачи</button>
-          <button>завершенные задачи</button> 
+          <ButtonDispList displayList={this.displayList}/>
         </div>
       </div>
       <div>
-        <TaskList taskList = {taskList} deleteTask={this.deleteTask} 
+        <TaskList taskList = {newTaskList} deleteTask={this.deleteTask} 
         importanceTask={this.importanceTask} activeTask={this.activeTask}/>
       </div>
     </div>
