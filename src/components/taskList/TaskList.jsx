@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {TaskItem} from './taskItems/TaskItem';
 
-export  const TaskList = ({taskList, deleteTask, importanceTask,  activeTask}) => {
+export  const TaskList = ({taskList =[], deleteTask, importanceTask,  activeTask}) => {
         return (
             
             <ul> список задач

@@ -3,6 +3,13 @@ import ReactDOM from 'react-dom';
 import {TaskList} from './components/taskList/TaskList';
 import {ButtonDispList} from './components/taskList/taskItems/buttons/button-disp-list/ButtonDispList';
 
+const filteredTaskList = (taskList, inputFilterValue) => {
+  if(inputFilterValue === '') {
+    return taskList;
+  } else {
+    return taskList.filter(item => item.name.includes(inputFilterValue));
+  }
+};
 
 class  App extends Component {
   state = {
@@ -34,7 +41,8 @@ class  App extends Component {
     
     ],
 
-    displayedList : 'active'
+    displayedList : 'all',
+    inputFilterValue: ''
   }
 
  importanceTask = (id) => {
@@ -97,31 +105,41 @@ class  App extends Component {
  
     this.setState(stateDisp);
   }
+
+
+  inputHandler = (e) => {
+    const {value} = e.target;
+
+    this.setState({inputFilterValue: value});
+  }
+
   
 
   
   render() {
-    const {taskList, displayedList} = this.state;
+    const {taskList, displayedList, inputFilterValue} = this.state;
     let newTaskList = null;
-    if(displayedList === 'completed'){
+
+    if(inputFilterValue !== '') {
+      newTaskList = filteredTaskList(taskList, inputFilterValue);
+    } else if(displayedList === 'completed'){
       newTaskList = taskList.filter(item => item.active === false);
     }else if(displayedList === 'active'){
       newTaskList = taskList.filter(item => item.active === true);
     } else{
       newTaskList = taskList;
     }
-    console.log(newTaskList);
-    
+
     return (
     <div>
       <div className='panel'>
-        <input type="text"/>
+        <input onChange={this.inputHandler} value={inputFilterValue} type="text"/>
         <div>
           <ButtonDispList displayList={this.displayList}/>
         </div>
       </div>
       <div>
-        <TaskList taskList = {newTaskList} deleteTask={this.deleteTask} 
+        <TaskList taskList = {newTaskList} deleteTask={this.deleteTask}
         importanceTask={this.importanceTask} activeTask={this.activeTask}/>
       </div>
     </div>
@@ -130,6 +148,8 @@ class  App extends Component {
   
  
 };
+
+
 
 ReactDOM.render(
   <App />,
