@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import {TaskList} from './components/taskList/TaskList';
 import {ButtonDispList} from './components/taskList/taskItems/buttons/button-disp-list/ButtonDispList';
+import {Form} from './components/form/form';
+
 
 const filteredTaskList = (taskList, inputFilterValue) => {
   if(inputFilterValue === '') {
@@ -16,7 +18,7 @@ class  App extends Component {
     taskList : [
       {
         id: 1,
-        name: 'task1',
+        name: 'learn js',
         importance: true,
         active: false
       },
@@ -28,17 +30,17 @@ class  App extends Component {
       },
       {
         id: 3,
-        name: 'task3',
+        name: 'drink coffee',
         importance: false,
         active: false
       },
       {
         id: 4,
-        name: 'task4',
+        name: 'learn react',
         importance: true,
         active: true
       },
-    
+
     ],
 
     displayedList : 'all',
@@ -113,6 +115,31 @@ class  App extends Component {
     this.setState({inputFilterValue: value});
   }
 
+
+  addNewTask = (inputNewTask) => {
+    const stateAddTask = (prestate) => {
+      const{taskList} = prestate;
+      const arrId = taskList.map(item => item.id);
+      const newId = Math.max.apply(null, arrId) + 1;
+
+      const newTask = {
+        id: newId,
+        name: inputNewTask,
+        importance: true,
+        active: true
+      };
+
+      taskList.push(newTask);
+      return {
+        taskList
+      };
+    };
+
+
+    this.setState(stateAddTask);
+
+  };
+
   
 
   
@@ -133,6 +160,9 @@ class  App extends Component {
     return (
     <div>
       <div className='panel'>
+        <div>
+          <Form addNewTask={this.addNewTask}/>
+        </div>
         <input onChange={this.inputHandler} value={inputFilterValue} type="text"/>
         <div>
           <ButtonDispList displayList={this.displayList}/>
